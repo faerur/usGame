@@ -17,7 +17,6 @@ data = pandas.read_csv("50_states.csv")
 remaining = True
 answer_state = screen.textinput(title=f"Guess the State", prompt="What's another state's name?")
 guesses = []
-states_to_learn = []
 score = 0
 
 while len(guesses) < 50:
@@ -32,9 +31,7 @@ while len(guesses) < 50:
         guesses.append(answer_state)
 
     if answer_state == "Exit":
-        for state in states:
-            if state not in guesses:
-                states_to_learn.append(state)
+        states_to_learn = [state for state in states if state not in guesses]
         break
     answer_state = screen.textinput(title=f"{score}/50 Guess the State", prompt="What's another state's name?")
 
